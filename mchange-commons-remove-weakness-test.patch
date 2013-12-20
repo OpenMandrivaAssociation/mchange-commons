@@ -1,0 +1,45 @@
+--- ./src/java/com/mchange/v2/util/junit/DoubleWeakHashMapJUnitTestCase.java.testweakness	2013-03-20 10:24:27.000000000 +0000
++++ ./src/java/com/mchange/v2/util/junit/DoubleWeakHashMapJUnitTestCase.java	2013-03-28 14:30:42.928482498 +0000
+@@ -83,42 +83,4 @@
+         assertEquals("After removing a doubled value, size should be 2", m.size(), 2);
+     }
+     
+-    public void testWeakness()
+-    {
+-        Integer a = new Integer(1);
+-        Integer b = new Integer(2);
+-        Integer c = new Integer(3);
+-        
+-        String poop = new String("poop");
+-
+-        Map m = new DoubleWeakHashMap();
+-        m.put(a, poop);
+-        m.put(b, new Object());
+-        m.put(c, new Object());
+-        
+-        //race condition... b & c might already have been removed... but i doubt it
+-        assertEquals("1) Weak values should not yet have been removed (but not guaranteed! sometimes fails without a defect!)", 3, m.size());
+-        
+-        // we are relying that a full, synchronous GC occurs,
+-        // which is not guaranteed in all VMs
+-        System.gc();
+-        
+-        // let's see if we can force a deeper gc via a big array creation
+-        byte[] bArray = new byte[ARRAY_SZ];
+-	System.gc();
+-	//try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
+-        
+-        assertEquals("2) Weak values should have been automatically removed (but not guaranteed! sometimes fails without a defect!)", 1, m.size());
+-        
+-        m.put( new Object(), b);
+-        
+-        //race condition... b & c might already have been removed... but i doubt it
+-        assertEquals("3) Weak key should not yet have been removed (but not guaranteed! sometimes fails without a defect!)", 2, m.size());
+-
+-        System.gc();
+-        // let's see if we can force a deeper gc via a big array creation
+-        bArray = new byte[ARRAY_SZ];
+-
+-        assertEquals("4) Weak key should have been automatically removed (but not guaranteed! sometimes fails without a defect!)", m.size(), 1);
+-    }
+ }

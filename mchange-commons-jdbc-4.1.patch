@@ -1,0 +1,23 @@
+--- ./src/java/com/mchange/v1/db/sql/DriverManagerDataSource.java.jdbc41	2013-03-20 10:24:27.000000000 +0000
++++ ./src/java/com/mchange/v1/db/sql/DriverManagerDataSource.java	2013-03-28 14:19:58.673058063 +0000
+@@ -43,6 +43,9 @@
+ import javax.sql.DataSource;
+ import com.mchange.io.UnsupportedVersionException;
+ 
++import java.sql.SQLFeatureNotSupportedException;
++import java.util.logging.Logger;
++
+ /**
+  * @deprecated use com.mchange.v2.c3p0.DriverManagerDataSource
+  */
+@@ -156,6 +159,10 @@
+ 	    }
+     }
+ 
++    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
++        throw new SQLFeatureNotSupportedException();
++    }
++
+     //ObjectFactory for JNDI referencing
+     public static class DmdsObjectFactory implements ObjectFactory
+     {
