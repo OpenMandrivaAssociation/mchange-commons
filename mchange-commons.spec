@@ -1,4 +1,4 @@
-%_javapackages_macros
+%{?_javapackages_macros:%_javapackages_macros}
 Name:    mchange-commons
 Version: 0.2.3.4
 Release: 3.0%{?dist}
@@ -85,3 +85,42 @@ install -p -m 644 src/maven/pom.xml \
 %files javadoc
 %doc LICENSE*
 %{_javadocdir}/%{name}
+
+%changelog
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.3.4-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
+* Tue Apr 02 2013 Mat Booth <fedora@matbooth.co.uk> - 0.2.3.4-2
+- Include pom file
+- Update project URL
+
+* Thu Mar 28 2013 Mat Booth <fedora@matbooth.co.uk> - 0.2.3.4-1
+- Update to latest upstream release
+- License change to "LGPLv2 or EPL"
+
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2-0.8.20110130hg
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
+* Tue Aug  7 2012 Mikolaj Izdebski <mizdebsk@redhat.com> - 0.2-0.7.20110130hg
+- Fix file permissions
+- Update to current packaging guidelines
+
+* Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2-0.6.20110130hg
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+* Wed Jan 25 2012 Deepak Bhole <dbhole@redhat.com> - 0.2-0.5.20110130hg
+- Added patch to build with JDBC 4.1/Java 7
+- Added patch to disable one of the tests that is not always guaranteed to pass
+
+* Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2-0.4.20110130hg
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+* Mon Jan 31 2011 Mat Booth <fedora@matbooth.co.uk> 0.2-0.3.20110130hg
+- Add build dep on ant-junit.
+- Build and install javadoc.
+
+* Sun Jan 30 2011 Mat Booth <fedora@matbooth.co.uk> 0.2-0.2.20110130hg
+- Update for guideline compliance.
+
+* Fri Oct 8 2010 Tom "spot" Callaway <tcallawa@redhat.com> 0.2-0.1.20101008hg
+- initial package
