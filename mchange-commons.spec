@@ -1,7 +1,7 @@
 %{?_javapackages_macros:%_javapackages_macros}
 Name:    mchange-commons
 Version: 0.2.7
-Release: 1.1
+Release: 1.2
 Summary: A collection of general purpose utilities for c3p0
 License: LGPLv2 or EPL
 URL:     https://github.com/swaldman/mchange-commons-java
